@@ -55,9 +55,9 @@ class EntryEntryState extends State<EntryEntry> {
       appBar: AppBar(
         title: Text(
           //header text
-          'Money Entry',
+          'Warehouse Finance',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24),
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
         ),
       ),
       body: Column(children: [
@@ -140,33 +140,6 @@ class EntryEntryState extends State<EntryEntry> {
           elevation: 2.0,
           child: ListTile(
             leading: CircleAvatar(
-              backgroundColor: Colors.green,
-              child: Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-              ),
-            ),
-            title: Text(
-              "Rp." + this.itemList[index].total.toString() + ",00",
-              style: textStyle,
-            ),
-            subtitle: Text(this.itemList[index].titlee.toString()),
-            onTap: () async {},
-            trailing: GestureDetector(
-              child: Icon(Icons.delete, color: Colors.red),
-              onTap: () async {
-                //Panggil Fungsi untuk Delete dari DB berdasarkan Item
-                _showDeleteDialog(context, itemList[index].entryId);
-              },
-            ),
-          ),
-        );
-         } else {
-           return Card(
-          color: Colors.white,
-          elevation: 2.0,
-          child: ListTile(
-            leading: CircleAvatar(
               backgroundColor: Colors.red,
               child: Icon(
                 Icons.arrow_back,
@@ -179,13 +152,41 @@ class EntryEntryState extends State<EntryEntry> {
             ),
             subtitle: Text(this.itemList[index].titlee.toString()),
             onTap: () async {},
-            trailing: GestureDetector(
-              child: Icon(Icons.delete, color: Colors.red),
-              onTap: () async {
-                //Panggil Fungsi untuk Delete dari DB berdasarkan Item
-                _showDeleteDialog(context, itemList[index].entryId);
-              },
+            // trailing: GestureDetector(
+            //   child: Icon(Icons.delete, color: Colors.red),
+            //   onTap: () async {
+              
+            //     //Panggil Fungsi untuk Delete dari DB berdasarkan Item
+            //     _showDeleteDialog(context, itemList[index].entryId);
+            //   },
+            // ),
+          ),
+        );
+         } else {
+           return Card(
+          color: Colors.white,
+          elevation: 2.0,
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Colors.green,
+              child: Icon(
+                Icons.arrow_forward,
+                color: Colors.white,
+              ),
             ),
+            title: Text(
+              "Rp." + this.itemList[index].total.toString() + ",00",
+              style: textStyle,
+            ),
+            subtitle: Text(this.itemList[index].titlee.toString()),
+            onTap: () async {},
+            // trailing: GestureDetector(
+            //   child: Icon(Icons.delete, color: Colors.red),
+            //   onTap: () async {
+            //     //Panggil Fungsi untuk Delete dari DB berdasarkan Item
+            //     _showDeleteDialog(context, itemList[index].entryId);
+            //   },
+            // ),
           ),
         );
          }
