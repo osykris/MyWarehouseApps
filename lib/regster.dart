@@ -4,6 +4,7 @@ import 'package:uts_osy/login_page.dart';
 import 'package:uts_osy/screen_loginemail.dart';
 import '../../../constants.dart';
 import '../../../components/already_have_an_account_acheck.dart';
+import 'main.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -153,9 +154,9 @@ class _RegisterState extends State<Register> {
         await user.updateProfile(displayName: _displayName.text);
         final user1 = _auth.currentUser;
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => LoginEmailPage(
-                  user: user1,
-                )));
+            builder: (context) => HomeScreen(
+          user: user,
+        )));
       }
     } catch (e) {
       _showSuccessSnackBar(

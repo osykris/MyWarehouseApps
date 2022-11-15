@@ -34,9 +34,11 @@ class _LoginPageState extends State<LoginPage> {
                   Spacer(),
                   Expanded(
                     flex: 8,
-                    child: Image.asset("assets/images/remove.png",  width: 350,             
-                    height: 250,
-                  ),
+                    child: Image.asset(
+                      "assets/images/remove.png",
+                      width: 350,
+                      height: 250,
+                    ),
                   ),
                   withEmailPassword(),
                 ],
@@ -67,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Icon(Icons.person),
                     ),
                   ),
-                   validator: (value) {
+                  validator: (value) {
                     if (value.isEmpty) return 'Please enter some text';
                     return null;
                   },
@@ -86,27 +88,28 @@ class _LoginPageState extends State<LoginPage> {
                         child: Icon(Icons.lock),
                       ),
                     ),
-                     validator: (value) {
-                    if (value.isEmpty) return 'Please enter some text';
-                    return null;
-                  },
+                    validator: (value) {
+                      if (value.isEmpty) return 'Please enter some text';
+                      return null;
+                    },
                   ),
                 ),
                 const SizedBox(height: defaultPadding),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                  primary: Colors.cyan, elevation: 0,
-                  minimumSize: const Size.fromHeight(50),),
+                    primary: Colors.cyan,
+                    elevation: 0,
+                    minimumSize: const Size.fromHeight(50),
+                  ),
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
-                       _signInWithEmailAndPassword();
+                      _signInWithEmailAndPassword();
                     }
-                   },
-                    child: Text(
-                      "Sign In".toUpperCase(),
-                    ),
-                     
+                  },
+                  child: Text(
+                    "Sign In".toUpperCase(),
                   ),
+                ),
                 const SizedBox(height: defaultPadding),
                 AlreadyHaveAnAccountCheck(
                   press: () {
@@ -150,17 +153,18 @@ class _LoginPageState extends State<LoginPage> {
         await user.sendEmailVerification();
       }
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
-        return HomeScreen(user: user,);
+        return HomeScreen(
+          user: user,
+        );
       }));
     } catch (e) {
-       _showSuccessSnackBar(Text("Failed to sign in with Email & Password",
-                          style: TextStyle(color: Colors.white)));
-      
+      _showSuccessSnackBar(Text("Failed to sign in with Email & Password",
+          style: TextStyle(color: Colors.white)));
     }
   }
 
-    _showSuccessSnackBar(message) {
+  _showSuccessSnackBar(message) {
     var _snackBar = SnackBar(content: message);
-   ScaffoldMessenger.of(context).showSnackBar(_snackBar);
+    ScaffoldMessenger.of(context).showSnackBar(_snackBar);
   }
 }
